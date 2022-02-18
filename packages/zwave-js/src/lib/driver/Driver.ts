@@ -189,7 +189,7 @@ const defaultOptions: ZWaveOptions = {
 	timeouts: {
 		ack: 1000,
 		byte: 150,
-		response: 1600,
+		response: 10000,
 		report: 10000,
 		nonce: 5000,
 		sendDataCallback: 65000, // as defined in INS13954
@@ -238,9 +238,9 @@ function checkOptions(options: ZWaveOptions): void {
 			ZWaveErrorCodes.Driver_InvalidOptions,
 		);
 	}
-	if (options.timeouts.response < 500 || options.timeouts.response > 5000) {
+	if (options.timeouts.response < 500 || options.timeouts.response > 20000) {
 		throw new ZWaveError(
-			`The Response timeout must be between 500 and 5000 milliseconds!`,
+			`The Response timeout must be between 500 and 20000 milliseconds!`,
 			ZWaveErrorCodes.Driver_InvalidOptions,
 		);
 	}
